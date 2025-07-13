@@ -1,0 +1,13 @@
+Resources
+https://youtu.be/ED6PRjmXgBA?si=KX79Mb1nVeGUPOOx
+Docker Doc
+Docker Hub
+
+How I did it
+pip freeze > requirements.txt  # To  specify all requirements
+
+docker build --quiet -t fastapi .  # returns only image ID
+
+docker images # to check for images
+
+docker run -p 49152:8000 34c # --publish! , search for 49152 on your device

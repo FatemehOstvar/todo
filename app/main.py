@@ -1,36 +1,54 @@
 from typing import List
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends
 from pydantic import BaseModel
-# import os
-# DB_URL = os.environ["DATABASE_URL"]
+
+from sqlalchemy.orm import Session
+
+from app import models, database
+
+app = FastAPI()
+
+
+# Dependency to get DB session
+def get_db():
+    db = database.SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
 class Item(BaseModel):
     text: str = None
     is_done: bool = False
 
-app = FastAPI()
-items = []
+    class Config:
+        orm_mode = True
 
-# defining a path in fastapi
-@app.get("/", response_model= dict)
+@app.get("/", response_model=dict)
 def root():
     return {"Hello": "World"}
 
-@app.post("/items", response_model= Item)
-def todo(item : Item):
-    items.append(item)
-    return items
+
+@app.post("/items", response_model=Item)
+def create_todo(item: Item, db: Session = Depends(get_db)):
+    db_item = models.Todo(text=item.text, is_done=item.is_done)
+    db.add(db_item)
+    db.commit()
+    db.refresh(db_item)
+    return db_item
 
 
-@app.get("/items", response_model=list[Item])
-def search_todo(item_id : int) -> List:
-    try:
-        return items[item_id]
-    except "e":
-        raise HTTPException(status_code=404,detail="Not Found")
+@app.get("/items", response_model=List[Item])
+def read_todos(db: Session = Depends(get_db)):
+    todos = db.query(models.Todo).all()
+    return todos
 
-def get_todo() -> List:
-    return items[:]
 
+@app.get("/items/{item_id}", response_model=Item)
+def read_todo(item_id: int, db: Session = Depends(get_db)):
+    todo = db.query(models.Todo).filter(models.Todo.id == item_id).first()
+    if not todo:
+        raise HTTPException(status_code=404, detail="Not Found")
+    return todo

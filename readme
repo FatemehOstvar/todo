@@ -11,3 +11,21 @@ docker build --quiet -t fastapi .  # returns only image ID
 docker images # to check for images
 
 docker run -p 49152:8000 34c # --publish! , search for 49152 on your device
+
+I added postgres
+pass is in .env
+
+changed compose to persist data.
+
+then run::  docker compose up (Start up all the containers defined in compose.yml)
+
+internal errors: check the log.
+docker compose logs -f
+
+
+to push :  docker push myusername/fastapi-app:latest
+if didn't work change your tag name or push with your current tag
+like this  docker tag fastapi-fastapi:latest setareh101/fastapi-app:latest
+
+after you pull the image
+docker run -d --name myfastapi -p 8000:80 setareh101/fastapi-app:latest

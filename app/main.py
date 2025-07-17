@@ -1,11 +1,11 @@
 from typing import List
 
 from fastapi import FastAPI, HTTPException, Depends
-from pydantic import BaseModel
 
 from sqlalchemy.orm import Session
 
 from app import models, database
+from app.schemas import Item, ItemCreate
 
 app = FastAPI()
 
@@ -19,25 +19,19 @@ def get_db():
         db.close()
 
 
-class Item(BaseModel):
-    text: str = None
-    is_done: bool = False
-
-    class Config:
-        orm_mode = True
-
 @app.get("/", response_model=dict)
 def root():
     return {"Hello": "World"}
 
 
 @app.post("/items", response_model=Item)
-def create_todo(item: Item, db: Session = Depends(get_db)):
+def create_todo(item: ItemCreate, db: Session = Depends(get_db)):
     db_item = models.Todo(text=item.text, is_done=item.is_done)
     db.add(db_item)
     db.commit()
     db.refresh(db_item)
     return db_item
+
 
 
 @app.get("/items", response_model=List[Item])

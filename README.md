@@ -33,12 +33,15 @@ GitHub Actions is used to automate the development workflow. The workflow is def
 To run the workflow manually:
 - Navigate to **GitHub → Actions → CI → Run workflow**
 
+![CI](https://github.com/FatemehOstvar/todo/actions/workflows/ci.yml/badge.svg)
+
 ## Getting Started
 
 ### Prerequisites
 
 - Docker and Docker Compose
 - Python 3.11 (optional, for local testing outside of containers)
+
 
 ### Setup Instructions
 

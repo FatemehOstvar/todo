@@ -33,7 +33,7 @@ GitHub Actions is used to automate the development workflow. The workflow is def
 To run the workflow manually:
 - Navigate to **GitHub → Actions → CI → Run workflow**
 
-![CI](https://github.com/FatemehOstvar/todo/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/FatemehOstvar/todo/actions/workflows/main.yml/badge.svg)
 
 ## Getting Started
 

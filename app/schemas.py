@@ -1,4 +1,3 @@
-# app/schemas.py (or just schemas.py if small project)
 from pydantic import BaseModel
 
 # Common base
@@ -15,5 +14,5 @@ class Item(ItemBase):
     id: int
 
     model_config = {
-        "from_attributes": True  # Pydantic v2 replacement for orm_mode
+        "from_attributes": True
     }

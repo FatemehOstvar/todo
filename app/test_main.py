@@ -5,7 +5,6 @@ from sqlalchemy.orm import sessionmaker
 from app.main import app, get_db
 from app.database import Base
 
-# ✔ Create an in-memory SQLite test DB
 SQLALCHEMY_TEST_DATABASE_URL = "sqlite:///./test.db"  # use ":memory:" for true temp, but needs extra tweak
 
 engine = create_engine(SQLALCHEMY_TEST_DATABASE_URL, connect_args={"check_same_thread": False})
@@ -56,7 +55,7 @@ def test_read_single_todo():
     created = create_response.json()
     created_id = created["id"]
 
-    # Then, fetch that specific todo by ID
+    # Then, fetch that specific to do by ID
     response = client.get(f"/items/{created_id}")
     assert response.status_code == 200
     data = response.json()

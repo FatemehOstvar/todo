@@ -10,6 +10,8 @@ on:
       - main
       - 'release/**'
   workflow_dispatch:
+env:
+  DEPLOYMENT_URL: https://todo-production-0934.up.railway.app
 
 jobs:
   test:
@@ -64,3 +66,10 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ vars.DOCKERHUB_USERNAME }}/todo-api:latest,${{ vars.DOCKERHUB_USERNAME }}/todo-api:${{ github.sha }}
+
+
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say it loud
+        run: echo "Deployed to $DEPLOYMENT_URL"

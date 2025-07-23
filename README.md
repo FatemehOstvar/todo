@@ -1,4 +1,6 @@
-![CI](https://github.com/FatemehOstvar/todo/actions/workflows/main.yml/badge.svg) 
+[![CI](https://github.com/<username>/<repo>/actions/workflows/ci.yml/badge.svg)](https://github.com/<username>/<repo>/actions/workflows/ci.yml)
+[![Docker Hub](https://img.shields.io/badge/docker-image-blue)](https://hub.docker.com/r/<username>/todo-api)
+[![Deploy](https://img.shields.io/badge/deploy-Railway-green)](https://todo-production-0934.up.railway.app)
 
 # FastAPI To-Do Application
 

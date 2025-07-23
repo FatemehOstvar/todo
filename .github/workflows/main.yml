@@ -70,6 +70,7 @@ jobs:
 
   notify:
     runs-on: ubuntu-latest
+    needs: docker
     steps:
       - name: Say it loud
         run: echo "Deployed to $DEPLOYMENT_URL"

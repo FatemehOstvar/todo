@@ -1,5 +1,5 @@
 ![CI](https://github.com/FatemehOstvar/todo/actions/workflows/main.yml/badge.svg)
-[![Docker Hub](https://img.shields.io/badge/docker-image-blue)](https://hub.docker.com/r/<username>/todo-api)
+[![Docker Hub](https://img.shields.io/badge/docker-image-blue)](https://hub.docker.com/r/setareh101/todo-api)
 [![Deploy](https://img.shields.io/badge/deploy-Railway-green)](https://todo-production-0934.up.railway.app)
 
 

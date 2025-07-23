@@ -1,3 +1,5 @@
+![CI](https://github.com/FatemehOstvar/todo/actions/workflows/main.yml/badge.svg) 
+
 # FastAPI To-Do Application
 
 This repository contains a simple web API for managing to-do items. The application is built using FastAPI, with PostgreSQL as the database engine. It is containerized with Docker and includes automated testing and continuous integration via GitHub Actions.
@@ -33,7 +35,6 @@ GitHub Actions is used to automate the development workflow. The workflow is def
 To run the workflow manually:
 - Navigate to **GitHub → Actions → CI → Run workflow**
 
-![CI](https://github.com/FatemehOstvar/todo/actions/workflows/main.yml/badge.svg)
 
 ## Getting Started
 

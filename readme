@@ -1,0 +1,52 @@
+Resources
+https://youtu.be/ED6PRjmXgBA?si=KX79Mb1nVeGUPOOx
+Docker Doc
+Docker Hub
+
+How I did it
+pip freeze > requirements.txt  # To  specify all requirements
+
+docker build --quiet -t fastapi .  # returns only image ID
+
+docker images # to check for images
+
+docker run -p 49152:8000 34c # --publish! , search for 49152 on your device
+
+I added postgres
+pass is in .env
+
+changed compose to persist data.
+
+then run::  docker compose up (Start up all the containers defined in compose.yml)
+
+internal errors: check the log.
+docker compose logs -f
+
+
+to push :  docker push myusername/fastapi-app:latest
+if didn't work change your tag name or push with your current tag
+like this  docker tag fastapi-fastapi:latest setareh101/fastapi-app:latest
+
+after you pull the image
+docker run -d --name myfastapi -p 8000:80 setareh101/fastapi-app:latest
+
+
+to check what can be cleaned.
+docker system df
+
+reset it all but db by :
+docker system prune -a
+
+then just rebuild:
+docker-compose up -d --build
+# FOR DEVELOPING YOUR TEST
+TODO Use pytest fixtures for reusable setup
+
+TODO Add teardown (cleanup) logic
+
+TODO Create a separate test database
+
+TODO Run tests in Docker containers for reproducibility
+
+TODO Include PUT, DELETE, validation errors, etc.
+

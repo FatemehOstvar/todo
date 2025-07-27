@@ -20,8 +20,7 @@ COPY app ./app
 # Copy frontend dist into backend
 COPY --from=frontend-builder /frontend/dist ./frontend/dist
 
-# Copy .env (optional)
-COPY .env .
+
 
 # Start FastAPI with frontend serving
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

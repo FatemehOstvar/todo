@@ -1,3 +1,8 @@
+![CI](https://github.com/FatemehOstvar/todo/actions/workflows/main.yml/badge.svg)
+[![Docker Hub](https://img.shields.io/badge/docker-image-blue)](https://hub.docker.com/r/setareh101/todo-api)
+[![Deploy](https://img.shields.io/badge/deploy-Railway-green)](https://todo-production-0934.up.railway.app)
+
+
 # FastAPI To-Do Application
 
 This repository contains a simple web API for managing to-do items. The application is built using FastAPI, with PostgreSQL as the database engine. It is containerized with Docker and includes automated testing and continuous integration via GitHub Actions.
@@ -33,12 +38,14 @@ GitHub Actions is used to automate the development workflow. The workflow is def
 To run the workflow manually:
 - Navigate to **GitHub → Actions → CI → Run workflow**
 
+
 ## Getting Started
 
 ### Prerequisites
 
 - Docker and Docker Compose
 - Python 3.11 (optional, for local testing outside of containers)
+
 
 ### Setup Instructions
 

@@ -1,8 +1,10 @@
+from pathlib import Path
 from typing import List
 
 from fastapi import FastAPI, HTTPException, Depends
 
 from sqlalchemy.orm import Session
+from starlette.staticfiles import StaticFiles
 
 from app import models, database
 from app.schemas import Item, ItemCreate

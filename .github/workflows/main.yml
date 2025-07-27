@@ -72,5 +72,5 @@ jobs:
     env:
       DEPLOYMENT_URL: https://todo-production-0934.up.railway.app
     steps:
-      - name: Say it loud
+      - name: Say it out loud
         run: echo "Deployed to $DEPLOYMENT_URL"

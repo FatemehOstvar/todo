@@ -27,7 +27,7 @@ client = TestClient(app)
 # Now define an actual test
 def test_create_todo():
     response = client.post(
-        "/items",
+        "/api/items",
         json={"text": "learn testing", "is_done": False}
     )
     assert response.status_code == 200
@@ -38,7 +38,7 @@ def test_create_todo():
 
 
 def test_read_all_todos():
-    response = client.get("/items")
+    response = client.get("/api/items")
     assert response.status_code == 200
     data = response.json()
     assert isinstance(data, list)
@@ -48,7 +48,7 @@ def test_read_all_todos():
 def test_read_single_todo():
     # First, create the todo_item
     create_response = client.post(
-        "/items",
+        "/api/items",
         json={"text": "learn testing", "is_done": False}
     )
     assert create_response.status_code == 200
@@ -56,7 +56,7 @@ def test_read_single_todo():
     created_id = created["id"]
 
     # Then, fetch that specific to do by ID
-    response = client.get(f"/items/{created_id}")
+    response = client.get(f"/api/items/{created_id}")
     assert response.status_code == 200
     data = response.json()
 
